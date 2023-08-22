@@ -1,0 +1,68 @@
+﻿@model IEnumerable<GardenApp.Models.Plan>
+
+@{
+    ViewData["Title"] = "PlanDetails";
+}
+<div class="row pt-4" style="text-align:center">
+    <a class="nav-link col-md-4" asp-area="" asp-controller="Admin" asp-action="Index">Customer Requests</a>
+    <a class="nav-link col-md-4" asp-area="" asp-controller="Project" asp-action="AddProject">Add Project Details</a>
+    <a class="nav-link col-md-4" asp-area="" asp-controller="Admin" asp-action="DeleteCustomer">Customer History</a>
+</div>
+<hr />
+<h1>Plan Details</h1>
+<hr />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PlanId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlanName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlanCategory)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MinQuantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CostPerSqft)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExpectedDuration)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlanId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlanName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlanCategory)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MinQuantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CostPerSqft)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExpectedDuration)
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "DeletePlan", new { id=item.PlanId })
+                @Html.ActionLink("Edit", "EditPlan", new { id=item.PlanId})
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<a class="nav-link" asp-area="" asp-controller="Admin" asp-action="CreatePlan">Add Plan</a>

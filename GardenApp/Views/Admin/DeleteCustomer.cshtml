@@ -1,0 +1,65 @@
+﻿@model IEnumerable<GardenApp.Models.Customer>
+
+@{
+    ViewData["Title"] = "Delete Customer";
+}
+
+<div class="row pt-4" style="text-align:center">
+    <a class="nav-link col-md-6" asp-area="" asp-controller="Admin" asp-action="Index">Customer Requests</a>
+    <a class="nav-link col-md-6" asp-area="" asp-controller="Admin" asp-action="PLanDetails">Plan Details</a>
+</div>
+<hr />
+<h1 style="text-align:center">CUSTOMER HISTORY</h1>
+<hr />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Message)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+    @if(item.Status=="Complete")
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContactNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Message)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+        </tr>
+}
+}
+    </tbody>
+</table>

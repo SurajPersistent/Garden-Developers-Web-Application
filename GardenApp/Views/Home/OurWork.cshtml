@@ -1,0 +1,40 @@
+﻿@model IEnumerable<GardenApp.Models.Project>
+@{
+    ViewData["Title"] = "Our Work";
+}
+<style>
+div.gallery {
+  margin: 5px;
+  border: 1px solid #ccc;
+  float: left;
+  width: 350px;
+
+}
+
+div.gallery:hover {
+  border: 1px solid #777;
+}
+
+div.gallery img {
+  width: 100%;
+  object-fit:cover;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+}
+</style>
+<hr />
+<h1 style="text-align:center">OUR WORK</h1>
+<hr />
+@foreach (var item in Model) {
+<div class="gallery">
+        <a target="_blank" href=@Html.DisplayFor(modelItem => item.ImageUrl)>
+    <img src=@Html.DisplayFor(modelItem => item.ImageUrl) width="600" height="400">
+  </a>
+  <div class="desc">@Html.DisplayFor(modelItem => item.Description)</div>
+</div>
+}
+
+

@@ -1,0 +1,64 @@
+﻿@model IEnumerable<GardenApp.Models.Plan>
+
+@{
+    ViewData["Title"] = "Services";
+}
+
+@*<div class="modal" id="GetQuote">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" style="font-size:30px">Quotation</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Enter Below details to get cost details</p>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>*@
+
+<hr />
+    <h1 style="text-align:center">Our Services</h1>
+<hr />
+@foreach (var item in Model) {
+    <div class="card text-white bg-dark mb-3" style="width:100%">
+    <div class="card-header">@Html.DisplayFor(modelItem => item.PlanName)</div>
+    <div class="card-body">
+    <div class="row pt-4">
+        <div class="col-3">
+                    <img src=@Html.DisplayFor(modelItem => item.ImageUrl) style="width:80%"><br /><br />
+           @* <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#GetQuote"><i class="bi bi-chat-right-text-fill"></i>&nbsp; Get Quotation</button>*@
+        </div>
+        <div class="col-9">
+            <table class="table table-hover">
+                <tr>
+                    <th scope="row">Category</th>
+                    <td>@Html.DisplayFor(modelItem => item.PlanCategory)</td>
+                </tr>                
+                <tr>
+                    <th scope="row">Minimum Quantity</th>
+                    <td>@Html.DisplayFor(modelItem => item.MinQuantity) Square Feet</td>
+                </tr>                
+                <tr>
+                    <th scope="row">Cost</th>
+                    <td>RS @Html.DisplayFor(modelItem => item.CostPerSqft) /Square Feet</td>
+                </tr>                
+                <tr>
+                    <th scope="row">Expected Duration</th>
+                    <td>@Html.DisplayFor(modelItem => item.ExpectedDuration) Days</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    </div>
+</div>
+}
+

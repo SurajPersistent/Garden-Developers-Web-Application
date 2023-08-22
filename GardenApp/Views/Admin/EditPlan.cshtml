@@ -1,0 +1,54 @@
+﻿@model GardenApp.Models.Plan
+
+@{
+    ViewData["Title"] = "EditPlan";
+}
+@if(ViewBag.Message!=null)
+{
+ <div class="alert alert-dismissible alert-primary col-md-6">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <strong>@ViewBag.Message</strong>
+</div>   
+}
+<hr />
+<h1 style="text-align:center">Edit Plan</h1>
+<hr />
+
+<div class="row center">
+    <h4>Enter Plan details</h4>
+    <div>
+        <form asp-action="EditPlan">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="PlanName" class="control-label"></label>
+                <input asp-for="PlanName" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="PlanCategory" class="control-label"></label>
+                <input asp-for="PlanCategory" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="MinQuantity" class="control-label"></label>
+                <input asp-for="MinQuantity" class="form-control" />
+                <span asp-validation-for="MinQuantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CostPerSqft" class="control-label"></label>
+                <input asp-for="CostPerSqft" class="form-control" />
+                <span asp-validation-for="CostPerSqft" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ExpectedDuration" class="control-label"></label>
+                <input asp-for="ExpectedDuration" class="form-control" />
+                <span asp-validation-for="ExpectedDuration" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Edit" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

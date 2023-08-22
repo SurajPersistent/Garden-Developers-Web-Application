@@ -1,0 +1,73 @@
+﻿@model GardenApp.Models.Customer
+<hr />
+    <h1 style="text-align:center;">CONTACT US</h1>
+<hr />
+@if(ViewBag.Message!=null)
+{
+ <div class="alert alert-dismissible alert-primary center">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <strong>@ViewBag.Message</strong>
+</div>   
+}
+
+<div class="row center">
+    <div>
+        <form asp-action="ContactUs">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="CustomerName" class="control-label">FullName</label>
+                <input asp-for="CustomerName" class="form-control" />
+                <span asp-validation-for="CustomerName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContactNo" class="control-label">Contact Number</label>
+                <input asp-for="ContactNo" class="form-control"/>
+                <span asp-validation-for="ContactNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label">Email Address</label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Message" class="control-label">Message</label>
+                <input asp-for="Message" class="form-control" />
+                <span asp-validation-for="Message" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Contact Us" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+
+<div class="row pt-4" style="text-align:center">
+    <div class="card text-white bg-dark mb-3" style="margin-right: 20px;width:30%;">
+        <div class="card-body">
+        <i class="bi bi-geo-alt-fill" style="font-size:70px;"></i>
+        <h4 class="card-title"><br />ADDRESS</h4>
+        <p class="card-text"><br />Rigveda Yajurveda Samaveda Atharvaveda, Plot No. 39, Phase I,
+    Rajiv Gandhi Information Technology Park, Hinjawadi, Pune 411057, India</p>
+        </div>
+    </div>
+    <div class="card text-white bg-dark mb-3" style="margin-right: 20px;width:30%;">
+        <div class="card-body">
+        <i class="bi bi-send" style="font-size:70px;"></i>
+        <h4 class="card-title"><br />EMAIL</h4>
+        <a class="card-text" href="mailto:info@persistent.com"><br />info@persistent.com</a>
+        </div>
+    </div>
+    <div class="card text-white bg-dark mb-3" style="width:30%;">
+        <div class="card-body">
+        <i class="bi bi-telephone-fill" style="font-size:70px;"></i>
+        <h4 class="card-title" ><br />Contact Number</h4>
+        <p class="card-text"><br />+91-20-67980000</p>
+        </div>
+    </div>
+</div>
